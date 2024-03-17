@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:UsedCarsFinalProject.ViewModels"
+             x:DataType="viewmodel:VehicleViewModel"
+             x:Class="UsedCarsFinalProject.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" HorizontalOptions="Center">
+            <FlexLayout JustifyContent="Center">
+                <Image Source="{Binding Logo}" />
+            </FlexLayout>
+            <Label Text="Scott's Sort of New Cars" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Padding="10,0" FontSize="Header" />
+            <Label Text="Our mission is simple: If it has wheels, it's worth selling. We do our part for the environment by making sure it's not us that's throwing it away." HorizontalTextAlignment="Center" Padding="20, 0" />
+            <Button Text="Inventory" Command="{Binding GoToInventoryCommand}" WidthRequest="250" BackgroundColor="DodgerBlue" FontAttributes="Bold" />
+            <Button Text="Directions" Command="{Binding GoToMapCommand}" WidthRequest="250" BackgroundColor="DodgerBlue" FontAttributes="Bold" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

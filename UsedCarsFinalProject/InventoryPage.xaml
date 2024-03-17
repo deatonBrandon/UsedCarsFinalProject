@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UsedCarsFinalProject.InventoryPage"
+             xmlns:model="clr-namespace:UsedCarsFinalProject.Models"
+             xmlns:viewmodel="clr-namespace:UsedCarsFinalProject.ViewModels"
+             x:DataType="viewmodel:VehicleViewModel"
+             Title="InventoryPage">
+
+    <ScrollView>
+        <CollectionView ItemsSource="{Binding SourceCollection}"
+                        ItemsLayout="VerticalGrid, 2"
+                        >
+            <CollectionView.Header>
+                <FlexLayout JustifyContent="Center">
+                    <Image Source="{Binding Logo}" />
+                </FlexLayout>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Vehicles">
+                    <Grid Padding="10" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout>
+                            <Image Source="{Binding CarUrl}"
+                                       Aspect="Fill"
+                                       HeightRequest="150"
+                                       WidthRequest="150" >
+                                <Image.Clip>
+                                    <GeometryGroup>
+                                        <EllipseGeometry Center="75,75" RadiusX="100" RadiusY="100" />
+                                    </GeometryGroup>
+                                </Image.Clip>
+                            </Image>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewmodel:VehicleViewModel}}, Path=SelectedItemCommand}" CommandParameter="{Binding .}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ScrollView>
+</ContentPage>
